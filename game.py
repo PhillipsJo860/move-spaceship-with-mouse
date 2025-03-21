@@ -62,18 +62,29 @@ def main():
     running = True
 
     # font_name = pygame.font.Font('Arial', 30)
-    text_position = [150, 100]
-    text = 'hi'
+    text_position = [-100, -100]
+    text = 'Spaceship'
+    background_image = pygame.image.load('saturn_family1.jpg').convert()
+    player_image = pygame.image.load('player.png').convert()
+    # click_sound = pygame.mixer.Sound('the sound')
     
     while running:
         running = handle_events(text_position)
         screen.fill(config.COLOR_WHITE)
+        player_position = pygame.mouse.get_pos()
+        x = player_position[0]
+        y = player_position[1]
+        player_image.set_colorkey(config.COLOR_BLACK)
 
+        # click_sound.play()
+
+        screen.blit(background_image, (0, 0))
+        screen.blit(player_image, (x, y))
 
         draw_text(screen, text, 30, config.COLOR_BLACK, text_position)
         
         # Calling a grid (Comment this out after you are done coding)
-        grid(screen)
+        # grid(screen)
         
         pygame.display.flip()
 
